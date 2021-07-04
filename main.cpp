@@ -77,10 +77,15 @@ void incluirNoFim (tLista* pLista, int R1, int R2, int V1){
  }
 int main() {
 
+setlocale(LC_ALL, "Portuguese");
+
+ofstream parte1;
+ifstream parte2;
 string resposta;
-int numero = 0;
+int numero = 0, R1,R2, V1;
 
 tCircuito circuito1;
+tLista* pLista;
 
 cout<<"Digite 1 para gravar ou 2 para ler um banco de dados"<<endl;
 cin>>resposta;
@@ -112,5 +117,20 @@ for (int i = 0; i < numero; i++){
 
   incluirNoFim(circuito2, circuito1.Res1, circuito1.Res2, circuito1.Vt1);
 }
+}
+
+parte1.open("Arquivo.txt",ios::out);
+parte1<<R1<< endl;
+parte1<<R2<< endl;
+parte1<<V1<< endl;
+
+pLista -> marcador = pLista -> primeiro;
+
+while (!finalizaLista(pLista)) {
+int R1 = pLista ->marcador ->Res1;
+int R2 = pLista ->marcador ->Res2;
+int V1= pLista ->marcador ->Vt1;
+
+pLista -> marcador = pLista -> marcador -> proximo;
 }
 }
